@@ -15,7 +15,7 @@ def dfs(graph, start):
 
     while len(stack) > 0:
         for i in range(len(visited)):
-            if  visited[start][i] == 1 and visited[i] == False:
+            if  graph[start][i] == 1 and visited[i] == False:
                 dfs(graph, i)
 
 dfs(graph, 0)
