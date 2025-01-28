@@ -11,11 +11,12 @@ graph = [
 def dfs(graph, start):
     visited = [False] * len(graph)
     stack = [start]
-    visited[stack] = True
+    visited[start] = True
+
+    while len(stack) > 0:
+        for i in range(len(visited)):
+            if  visited[start][i] == 1 and visited[i] == False:
+                dfs(graph, i)
 
 dfs(graph, 0)
 
-Empty = False
-
-while not Empty:
-    pass
