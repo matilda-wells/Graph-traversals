@@ -1,39 +1,23 @@
 graph = [
-	[0,1,1,0,0,0],
-	[1,0,0,1,1,0],
-	[1,0,0,0,0,1],
-	[0,1,0,0,0,0],
-	[0,1,0,0,0,1],
-	[0,0,1,0,1,0]
+    [0,1,1,0,0,0],
+    [1,0,0,1,1,0],
+    [1,0,0,0,0,1],
+    [0,1,0,0,0,0],
+    [0,1,0,0,0,1],
+    [0,0,1,0,1,0]
 ]
-
-VISITED = 0
-UNVISITED = 0
-
-def dfs(graph, start):
-    visited = [False] * len(graph)
-    stack = [start]
-    # visited[start] = True
-
-    # while len(stack) > 0:
-    #     for i in range(len(visited)):
-    #         if  graph[start][i] == 1 and visited[i] == False:
-    #             dfs(graph, i)
-
-    visited[start] = True
-    current = start
-    while len(stack) > 0:
-        found = False
-        # find an unvisited neighbour of the current node
-        for neighbour in range(len(graph)):
-            if graph[current][neighbour] == 1 and visited[neighbour] == False:
-                stack.append(neighbour)
-                found = True
-        # no unvisited neighbours - pop from the stack
-        if not found:
-            current = stack.pop()
-
-
- 
-dfs(graph, 0)
+def dfs(start):
+    visited = [False] * len(graph)  # Track visited nodes
+    stack = [start]  # Use stack for DFS
+    while stack:
+        current = stack.pop()  # Remove last element (LIFO order)
+        if not visited[current]:  # Process if not visited
+            visited[current] = True
+            print("Visited", current)
+            # Add unvisited neighbors to stack
+            for neighbor in range(len(graph[current])):
+                if graph[current][neighbor] == 1 and not visited[neighbor]:
+                    stack.append(neighbor)
+# Start DFS from node 0
+dfs(0)
 
